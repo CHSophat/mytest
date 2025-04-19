@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.bunny.net/css?family=Roboto:400,700" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            
+            display: flex;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            height: 250vh;
+            background: #2a5298;
+            color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.collapsed {
+            width: 60px;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #2a5298;
+            text-align: center;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .sidebar.collapsed .sidebar-header h3 {
+            display: none;
+        }
+
+        .sidebar ul.components {
+            padding: 20px 0;
+        }
+
+        .sidebar ul li {
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar.collapsed ul li a {
+            justify-content: center;
+        }
+
+        .sidebar.collapsed ul li a span {
+            display: none;
+        }
+
+        /* Content Styling */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .content.collapsed {
+            margin-left: 60px;
+        }
+
+        
+        /* Sidebar Toggle Button */
+        #sidebarToggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            background: #1e3c72;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #sidebarToggle:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        /* Dashboard Widgets */
+        .dashboard-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .widget {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .widget:hover {
+            transform: translateY(-5px);
+        }
+
+        .widget-icon {
+            font-size: 2rem;
+            color: #6a11cb;
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .widget-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Charts */
+        .chart-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+    </style>
+    <title>Modern Dashboard</title>
+</head>
+<body>
+    <!-- Sidebar -->
+         <!-- Modern Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+
+      <h3>Menu</h3>
+      
+    </div>
+    <div class="menu-container">
+        <ul>
+          <li><a href="/customers.html"><i class="bi bi-house"></i> <span>Home</span></a></li>
+          <li><a href="/Order.html"><i class="bi bi-grid"></i> <span>Order</span></a></li>
+          <li><a href="/store.html"><i class="bi bi-box-seam"></i> <span>Store</span></a></li>
+          <li><a href="/feature.html"><i class="bi bi-star"></i> <span>Feature</span></a></li>
+          <li><a href="/customers.html"><i class="bi bi-people"></i> <span>Customer</span></a></li>
+
+            
+        </ul>
+      </div>
+      <style>
+        /* Container for the menu */
+        .menu-container {
+          max-height: 90vh; /* Set a fixed height for the container */
+          overflow-y: auto; /* Enable vertical scrolling */
+         /* Optional: Add a border */
+          border-radius: 8px; /* Optional: Add rounded corners */
+          padding: 10px; /* Optional: Add padding */
+         /* Optional: Add a background color */
+        }
+    
+        /* Style for the list */
+        ul {
+          list-style-type: none; /* Remove bullet points */
+          padding: 0;
+          margin: 0;
+        }
+    
+        /* Style for list items */
+        ul li {
+          margin-bottom: 10px; /* Add spacing between items */
+        }
+    
+        /* Style for links */
+        ul li a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: #333;
+          padding: 8px 12px;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+        }
+    
+        /* Hover effect for links */
+        ul li a:hover {
+          background-color: #e9ecef; /* Light gray background on hover */
+        }
+    
+        /* Style for icons */
+        ul li a i {
+          margin-right: 10px; /* Add spacing between icon and text */
+          font-size: 1.2rem; /* Adjust icon size */
+        }
+    
+        /* Optional: Add a scrollbar style */
+        .menu-container::-webkit-scrollbar {
+          width: 8px; /* Width of the scrollbar */
+        }
+    
+       
+    
+        .menu-container::-webkit-scrollbar-thumb {
+          background: #888; /* Color of the scrollbar thumb */
+          border-radius: 4px; /* Rounded corners for the thumb */
+        }
+    
+        .menu-container::-webkit-scrollbar-thumb:hover {
+          background: #555; /* Color of the scrollbar thumb on hover */
+        }
+      </style>
+  </div>
+
+
+    <!-- Sidebar Toggle Button -->
+    <button id="sidebarToggle">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <div class="content" id="content">
+        <!-- Title -->
+        <h1 class="mb-4"><i class="bi bi-people"></i> Product Features</h1>
+         <!-- Logout Button -->
+        
+      
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="addProduct-tab" data-bs-toggle="tab" data-bs-target="#addProduct" type="button" role="tab">
+              <i class="bi bi-plus-lg"></i> Add Product
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="productList-tab" data-bs-toggle="tab" data-bs-target="#productList" type="button" role="tab">
+              <i class="bi bi-list-ul"></i> Product List
+            </button>
+          </li>
+        </ul>
+      
+        <!-- Tab Content -->
+        <div class="tab-content" id="myTabContent">
+          <!-- Add Product Tab -->
+          <div class="tab-pane fade show active" id="addProduct" role="tabpanel">
+            <div class="product-form mt-4">
+              <form id="addProductForm">
+                <!-- Product Type -->
+                <div class="form-group">
+                  <label for="productType">
+                    <i class="bi bi-tags"></i> Product Type
+                  </label>
+                  <select class="form-control" id="productType" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Books">Books</option>
+                    <option value="Home & Garden">Home & Garden</option>
+                  </select>
+                </div>
+      
+                <!-- Product Image -->
+                <div class="form-group">
+                  <label for="productImage">
+                    <i class="bi bi-image"></i> Image URL
+                  </label>
+                  <input type="text" class="form-control" id="productImage" placeholder="Enter image URL" required>
+                </div>
+      
+                <!-- Product Name -->
+                <div class="form-group">
+                  <label for="productName">
+                    <i class="bi bi-box"></i> Name
+                  </label>
+                  <input type="text" class="form-control" id="productName" placeholder="Enter product name" required>
+                </div>
+      
+                <!-- Product Price -->
+                <div class="form-group">
+                  <label for="productPrice">
+                    <i class="bi bi-currency-dollar"></i> Price
+                  </label>
+                  <input type="number" class="form-control" id="productPrice" placeholder="Enter product price" step="0.01" required>
+                </div>
+      
+                <!-- Product Size -->
+                <div class="form-group">
+                  <label for="productSize">
+                    <i class="bi bi-rulers"></i> Size
+                  </label>
+                  <select class="form-control" id="productSize" required>
+                    <option value="" disabled selected>Select size</option>
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                  </select>
+                </div>
+      
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success w-100 mt-3">
+                  <i class="bi bi-save"></i> Add Product
+                </button>
+              </form>
+            </div>
+          </div>
+      
+          <!-- Product List Tab -->
+          <div class="tab-pane fade" id="productList" role="tabpanel">
+            <div class="table-responsive mt-4">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><i class="bi bi-tags"></i> Type</th>
+                    <th><i class="bi bi-image"></i> Image</th>
+                    <th><i class="bi bi-box"></i> Name</th>
+                    <th><i class="bi bi-currency-dollar"></i> Price</th>
+                    <th><i class="bi bi-rulers"></i> Size</th>
+                    <th><i class="bi bi-gear"></i> Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productsContainer">
+                  <!-- Dynamically populated rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Add this CSS to your existing <style> block -->
+      
+      
+      
+      <!-- JavaScript Updates -->
+      <script>
+        let products = [];
+      
+        document.getElementById('addProductForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+      
+          const product = {
+            type: document.getElementById('productType').value,
+            image: document.getElementById('productImage').value,
+            name: document.getElementById('productName').value,
+            price: parseFloat(document.getElementById('productPrice').value),
+            size: document.getElementById('productSize').value,
+          };
+      
+          // Validation
+          if (!product.type || !product.image || !product.name || isNaN(product.price) || !product.size) {
+            alert("Please fill all fields correctly.");
+            return;
+          }
+      
+          products.push(product);
+          renderProducts();
+          document.getElementById('addProductForm').reset();
+          alert('Product added successfully!');
+        });
+      
+        function renderProducts() {
+          const container = document.getElementById('productsContainer');
+          container.innerHTML = '';
+      
+          products.forEach((product, index) => {
+            const row = `
+              <tr>
+                <td>${product.type}</td>
+                <td>
+                  <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                </td>
+                <td>${product.name}</td>
+                <td>$${product.price.toFixed(2)}</td>
+                <td>${product.size}</td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" onclick="editProduct(${index})">
+                    <i class="bi bi-pencil"></i> Edit
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger ms-2" onclick="deleteProduct(${index})">
+                    <i class="bi bi-trash"></i> Delete
+                  </button>
+                </td>
+              </tr>
+            `;
+            container.insertAdjacentHTML('beforeend', row);
+          });
+        }
+      
+        function editProduct(index) {
+          const product = products[index];
+          document.getElementById('productType').value = product.type;
+          document.getElementById('productImage').value = product.image;
+          document.getElementById('productName').value = product.name;
+          document.getElementById('productPrice').value = product.price;
+          document.getElementById('productSize').value = product.size;
+          products.splice(index, 1);
+          renderProducts();
+          document.getElementById('addProduct-tab').click();
+        }
+      
+        function deleteProduct(index) {
+          products.splice(index, 1);
+          renderProducts();
+          alert('Product deleted successfully!');
+        }
+      </script>
+
+      <style>
+
+
+        .product-form {
+            max-width: 600px;
+            margin: 0 auto;
+          }
+          
+          .product-form .form-control {
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            padding: 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+          }
+          
+          .product-form .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.2);
+            outline: none;
+          }
+          
+          /* Enhanced Table Styling */
+          .table thead {
+            background: linear-gradient(135deg, #0d6efd, #1e88e5);
+            color: white;
+          }
+          
+          .table-hover tbody tr:hover {
+            background: #f1f3fa;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+          }
+
+        /* Gradient Title */
+        /* Tab Styling */
+        .nav-tabs {
+          border-bottom: 2px solid #dee2e6;
+          margin-bottom: 25px;
+        }
+    
+        .nav-tabs .nav-link {
+          font-weight: 600;
+          color: #495057;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 10px 10px 0 0;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+    
+        .nav-tabs .nav-link.active {
+          background: linear-gradient(135deg, #0d6efd, #1e88e5);
+          color: white !important;
+          border-bottom: 2px solid transparent;
+          transform: translateY(2px);
+        }
+    
+        .nav-tabs .nav-link:hover:not(.active) {
+          background: #f1f3fa;
+          color: #0d6efd;
+        }
+    
+        /* Form Styling */
+        .customer-form {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+    
+        .form-group {
+          margin-bottom: 20px;
+        }
+    
+        .form-group label {
+          font-weight: 600;
+          color: #343a40;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+        }
+    
+        .form-group input,
+        .form-group select {
+          width: 100%;
+          padding: 12px;
+          border: 2px solid #ced4da;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .form-group input:focus,
+        .form-group select:focus {
+          border-color: #0d6efd;
+          box-shadow: 0 0 15px rgba(13, 110, 253, 0.2);
+          outline: none;
+        }
+    
+        /* Submit Button */
+        .submit-btn {
+          width: 100%;
+          padding: 12px;
+          background: linear-gradient(135deg, #0d6efd, #1e88e5);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background 0.3s ease, transform 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+    
+        .submit-btn:hover {
+          background: linear-gradient(135deg, #0b5ed7, #1976d2);
+          transform: translateY(-2px);
+        }
+    
+        /* Table Styling */
+        .table-responsive {
+          margin-top: 25px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          overflow: hidden;
+        }
+    
+        .table thead {
+          background: linear-gradient(135deg, #0d6efd, #1e88e5);
+          color: white;
+        }
+    
+        .table tbody tr:hover {
+          background: #f8f9fa;
+          transform: scale(1.01);
+          transition: all 0.3s ease;
+        }
+    
+        .table td, .table th {
+          vertical-align: middle;
+          padding: 15px;
+        }
+    
+        /* Action Buttons */
+        .btn-outline-primary {
+          border-color: #0d6efd;
+          color: #0d6efd;
+          padding: 6px 14px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+        }
+    
+        .btn-outline-primary:hover {
+          background: #0d6efd;
+          color: white;
+        }
+    
+        .btn-outline-danger {
+          border-color: #dc3545;
+          color: #dc3545;
+          padding: 6px 14px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+        }
+    
+        .btn-outline-danger:hover {
+          background: #dc3545;
+          color: white;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .content {
+            padding: 20px;
+          }
+    
+          .table-responsive {
+            overflow-x: auto;
+          }
+    
+          .table th, .table td {
+            padding: 10px;
+            font-size: 0.9rem;
+          }
+        }
+      </style>
+    
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+     
+
+    
+      <!-- Bootstrap JS and Popper.js -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    
+
+    <!-- Bootstrap JS (with Popper.js included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS for Sidebar Toggle -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('collapsed');
+        });
+
+       
+    </script>
+</body>
+</html>

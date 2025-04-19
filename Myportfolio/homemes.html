@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar with Switch Button</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+  
+       /* Custom Styles */
+       body {
+        font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+    .navbar {
+      background-color: #efeeee; /* Light background */
+      border-bottom: 1px solid #ddd; /* Subtle border for separation */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    .navbar-brand h2 {
+      color: #1e3c72; /* Primary blue for brand text */
+      font-weight: 700;
+    }
+    .navbar-nav .nav-link {
+      color: #333 !important; /* Dark gray for nav links */
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #1e3c72 !important; /* Primary blue on hover */
+    }
+    body.dark-mode  .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode  .nav-link:hover {
+      color: #4ecca3 !important;
+      transform: translateY(-3px);
+    }
+    
+    body.dark-mode #echoText {
+      color: #4ecca3; /* Bright green */
+    }
+    body.dark-mode #bayText {
+      color: #fff; /* White */
+    }
+    /* Switch Button */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 30px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 24px;
+      width: 24px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #4ecca3; /* Bright green for active state */
+    }
+    input:checked + .slider:before {
+      transform: translateX(30px);
+    }
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #fff;
+    }
+    body.dark-mode .navbar {
+      background: rgba(0, 0, 0, 0.7); 
+      backdrop-filter: blur(10px);
+    }
+    body.dark-mode .navbar-brand h2 {
+      color: #fff;
+    }
+    body.dark-mode .nav-link {
+      color: #fff !important;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <h2><span id="echoText">CH</span><span id="bayText">PHAT</span></h2>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#About">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Projects</a>
+          </li>
+          
+        </ul>
+        <!-- Switch Button -->
+        <div class="form-check form-switch ms-3">
+          <label class="switch">
+            <input type="checkbox" id="modeSwitch">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Snowflakes -->
+    <div class="snowflakes">
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+      <img src="/photo_2025-02-24_12-06-06.jpg" alt="Profile Picture" class="profile-image">
+  <style>
+     .profile-image {
+      width: 150px; /* Adjust size as needed */
+      height: 150px; /* Ensure it's a square for perfect circle */
+      object-fit: cover; /* Ensures the image fits within the circle */
+      border-radius: 50%; /* Makes the image circular */
+      border: 5px solid #1e3c72; /* Adds a blue frame */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth */
+      margin: 0 auto; /* Centers the image */
+      display: block;
+    }
+  </style>
+      <h1 class="display-4 fw-bold animate__animated animate__heartBeat glow-text" style="animation-duration: 2s;">
+        CHHUN SOPHAT
+      </h1>
+      <style>
+           body.dark-mode  .glow-text {
+          color: #4ecca3; /* Main text color */
+          text-shadow: 0 0 10px #4ecca3, 0 0 5px #4ecca3, 0 0 0px #4ecca3; /* Glow effect */
+          animation: glowing 2s infinite alternate; /* Continuous glowing animation */
+        }
+        @keyframes glowing {
+          0% {
+            text-shadow: 0 0 10px #4ecca3, 0 0 0px #4ecca3, 0 0 0px #4ecca3;
+          }
+          100% {
+            text-shadow: 0 0 20px #4ecca3, 0 0 0px #4ecca3, 0 0 0px #4ecca3, 0 0 80px #4ecca3;
+          }
+        }
+      </style>
+      
+      <p class="lead">I'm a passionate developer/designer dedicated to creating modern, intuitive, and user-friendly solutions. Explore my work and let's build something amazing together!</p>
+      <a href="/Chhun Sophat (1).pdf" class="btn btn-custom" download>
+        <i class="fas fa-download me-2"></i> Download CV
+      </a>
+    </div>
+  </section>
+
+  <style>
+    h1{
+      color:  #2a5298;
+    }
+    body.dark-mode .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), #2a5298);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    body.dark-mode .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    body.dark-mode .hero img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    body.dark-mode .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    body.dark-mode .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    body.dark-mode .hero .btn-custom {
+      background-color: #fff;
+      color: #1e3c72;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode .hero .btn-custom:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-3px);
+    }
+
+    body.dark-mode .snowflakes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    body.dark-mode .snowflake {
+      position: absolute;
+      top: -10%;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: snowfall linear infinite;
+    }
+
+    body.dark-mode .snowflake {
+      position: absolute;
+      top: -10%;
+      width: 10px;
+      height: 10px;
+      background: rgb(104, 110, 148);
+      border-radius: 50%;
+      animation: snowfall linear infinite;
+    }
+
+    @keyframes snowfall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(27, 95, 255, 0.915), #b5cbf0);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn-custom {
+      background-color: #fff;
+      color: #1e3c72;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .hero .btn-custom:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-3px);
+    }
+
+    .snowflakes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10%;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: snowfall linear infinite;
+    }
+
+    @keyframes snowfall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+  </style>
+
+
+  <script>
+    // JavaScript to dynamically generate snowflakes
+    const snowflakesContainer = document.querySelector('.snowflakes');
+
+    for (let i = 0; i < 50; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = `${Math.random() * 100}%`;
+      snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      snowflake.style.opacity = Math.random();
+      snowflake.style.width = `${Math.random() * 10 + 5}px`;
+      snowflake.style.height = snowflake.style.width;
+      snowflakesContainer.appendChild(snowflake);
+    }
+  </script>
+
+  <section class="skills-section" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container">
+    <h2 class="text-center mb-5" >MY OWN SKILLS</h2>
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-6">
+        <div class="skill-item " data-aos="zoom-in-up" data-aos-duration="1000">
+          <h4>HTML</h4>
+          <div class="progress ">
+            <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="zoom-in-up" data-aos-duration="1000">
+          <h4>CSS</h4>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column -->
+      <div class="col-md-6">
+        <div class="skill-item" data-aos="zoom-in-up" data-aos-duration="1000">
+          <h4>JavaScript</h4>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="skill-item" data-aos="zoom-in-up" data-aos-duration="1000">
+          <h4>Bootstrap</h4>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+      
+      body.dark-mode  .skills-section {
+    background-color: #000; /* Black background */
+    padding: 6rem 0; /* Add padding for spacing */
+  }
+  body.dark-mode  .skills-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff; /* White text for contrast */
+  }
+  body.dark-mode .skill-item {
+    margin-bottom: 1.5rem;
+  }
+  body.dark-mode .skill-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff; /* White text for contrast */
+  }
+  body.dark-mode .progress {
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle background for progress bar */
+  }
+  body.dark-mode .progress-bar {
+    background-color: #4ecca3; /* Bright green for progress bar */
+    transition: width 0.5s ease-in-out;
+  }
+  body.dark-mode .progress-bar:hover {
+    background-color: #3aa888; /* Darker green on hover */
+  }
+
+  .skills-section {
+      background-color: #ffffff; /* Light background */
+      padding: 4rem 0; /* Add padding for spacing */
+      border-radius: 15px; /* Rounded corners for the section */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    .skills-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e3c72; /* Primary blue for headings */
+    }
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+    .skill-item h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1e3c72; /* Primary blue for skill names */
+    }
+    .progress {
+      height: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #e5e7eb; /* Light gray for progress bar background */
+    }
+    .progress-bar {
+      background-color: #1e3c72; /* Primary blue for progress bar fill */
+      transition: width 0.5s ease-in-out;
+    }
+    .progress-bar:hover {
+      background-color: #2a5298; /* Darker blue on hover */
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .skills-section h2 {
+        font-size: 2rem;
+      }
+      .skill-item h4 {
+        font-size: 1rem;
+      }
+    }
+
+
+    
+   
+</style>
+
+<section class="dashboard-content container my-5 p-5">
+  <h2 class="text-center mb-5 ">MY PROJECT STATIC</h2>
+  <div class="row g-4">
+    <!-- Analytics Card -->
+    <div class="col-md-4 col-sm-6" data-aos="zoom-in-up">
+      <div class="card h-100 p-4 text-center">
+        <i class="fas fa-database me-2 card-icon"></i>
+        <a href="/customers.html" class="text-decoration-none text-dark">
+          <h3 class="fw-bold">Cruding</h3>
+        </a>
+        <p>CRUD  four basic operations in database management and web development. </p>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6" data-aos="zoom-in-up">
+        <div class="card h-100 p-4 text-center">
+          <i class="fas fa-shopping-cart me-2 card-icon"></i>
+          <a href="/homepage.html" class="text-decoration-none text-dark">
+            <h3 class="fw-bold">Ecommerce</h3>
+          </a>
+          <p>E-commerce refers to the buying and selling of goods and services</p>
+        </div>
+      </div>
+ 
+    <!-- Settings Card -->
+</section>
+
+<style>
+    body.dark-mode .dashboard-content {
+    background-color: #000; /* Black background */
+    padding: 6rem 0; /* Add padding for spacing */
+  }
+   h2{
+    color: #1e3c72;
+  }
+
+  body.dark-mode h2{
+    color: #ffffff;
+  }
+
+  body.dark-mode .card {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent card background */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1); /* Subtle glow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  body.dark-mode  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2); /* Stronger glow on hover */
+  }
+  body.dark-mode .card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4ecca3; /* Bright green for headings */
+    margin-bottom: 1rem;
+  }
+  body.dark-mode .card p {
+    font-size: 1rem;
+    color: #ccc; /* Light gray for paragraph text */
+    line-height: 1.6;
+  }
+  body.dark-mode .card-icon {
+    font-size: 2rem;
+    color: #4ecca3; /* Bright green for icons */
+    margin-bottom: 1rem;
+  }
+
+   .dashboard-content {
+      background-color: #ffffff; /* Light background */
+      padding: 4rem 0; /* Add padding for spacing */
+      border-radius: 15px; /* Rounded corners for the section */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    .card {
+      background: #ffffff; /* White card background */
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e3c72; /* Primary blue for headings */
+      margin-bottom: 1rem;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #666; /* Soft gray for paragraph text */
+      line-height: 1.6;
+    }
+    .card-icon {
+      font-size: 2rem;
+      color: #1e3c72; /* Primary blue for icons */
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .card h3 {
+        font-size: 1.2rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+      }
+      .card-icon {
+        font-size: 1.5rem;
+      }
+    }
+    @media (max-width: 576px) {
+      .card {
+        padding: 1.5rem;
+      }
+    }
+
+  
+</style>
+
+
+
+
+<section class="dashboard-content container my-5 p-5" data-aos="zoom-in-up">
+  <div class="row gy-5">
+    <!-- Profile Section -->
+    <div class="col-md-4 text-center">
+      <img src="/photo_2025-02-24_12-06-06.jpg" alt="Profile Picture" class="profile-image">
+      <style>
+         .profile-image {
+          width: 150px; /* Adjust size as needed */
+          height: 150px; /* Ensure it's a square for perfect circle */
+          object-fit: cover; /* Ensures the image fits within the circle */
+          border-radius: 50%; /* Makes the image circular */
+          border: 5px solid #1e3c72; /* Adds a blue frame */
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth */
+          margin: 0 auto; /* Centers the image */
+          display: block;
+        }
+      </style>
+      <h2 class="fw-bold">CHHUN SOPHAT</h2>
+      <p>Passionate Developer & Designer</p>
+    </div>
+    <!-- About Me Section -->
+    <div class="col-md-8">
+      <div class="about-me">
+        <h2>About Me</h2>
+        <p>
+          I'm CHHUN SOPHAT, a passionate developer and designer dedicated to creating modern, intuitive, and user-friendly solutions.
+          With expertise in HTML, CSS, JavaScript, and Bootstrap, I strive to deliver high-quality products tailored to meet your needs.
+          Explore my work and let's build something amazing together!
+        </p>
+        <h3 class="fw-bold mt-4">Skills</h3>
+        <ul class="skills-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Bootstrap</li>
+          <li>Responsive Design</li>
+          <li>UI/UX Design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+
+body.dark-mode .dashboard-content {
+      background-color: #000; /* Black background */
+      padding: 4rem 0; /* Add padding for spacing */
+      border-radius: 15px; /* Rounded corners for the section */
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1); /* Subtle shadow for depth */
+      color: #fff; /* White text for visibility */
+    }
+    body.dark-mode .about-me h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4ecca3; /* Bright green for headings */
+      margin-bottom: 1.5rem;
+    }
+    body.dark-mode .about-me p {
+      font-size: 1rem;
+      color: #ccc; /* Light gray for paragraph text */
+      line-height: 1.6;
+    }
+    body.dark-mode .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #4ecca3; /* Bright green border */
+      margin-bottom: 1.5rem;
+    }
+    body.dark-mode .btn-custom {
+      background-color: #4ecca3; /* Bright green for buttons */
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+    body.dark-mode .btn-custom:hover {
+      background-color: #787777; /* Darker blue on hover */
+    }
+    body.dark-mode .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    body.dark-mode .skills-list li {
+      background-color: #333; /* Dark gray background */
+      color: #fff; /* White text */
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+
+
+
+     .dashboard-content {
+      background-color: #ffffff; /* Light background */
+      padding: 4rem 0; /* Add padding for spacing */
+      border-radius: 15px; /* Rounded corners for the section */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    .about-me h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e3c72; /* Primary blue for headings */
+      margin-bottom: 1.5rem;
+    }
+    .about-me p {
+      font-size: 1rem;
+      color: #666; /* Soft gray for paragraph text */
+      line-height: 1.6;
+    }
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #1e3c72; /* Primary blue border */
+      margin-bottom: 1.5rem;
+    }
+    .btn-custom {
+      background-color: #1e3c72; /* Primary blue for buttons */
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #2a5298; /* Darker blue on hover */
+    }
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .skills-list li {
+      background-color: #e5e7eb; /* Light gray background */
+      color: #333;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+</style>
+
+
+<section class="dashboard-content container my-5 p-5" >
+  <div class="row gy-5">
+    <!-- Contact Information -->
+    <div class="col-md-6" >
+      <div class="contact-me">
+        <h2>Contact Me</h2>
+        <p>
+          Feel free to reach out to me if you have any questions or would like to collaborate.
+          I'm always open to new opportunities and exciting projects!
+        </p>
+        <p><strong>Location:</strong> Reussei Koev</p>
+        <p><strong>Email:</strong> chhunsophat.cs@gmail.com</p>
+        <p><strong>Phone:</strong> +855 692 868 61</p>
+        <p><strong>Follow Me:</strong></p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Form -->
+    <div class="col-md-6"  data-aos="zoom-in-up>
+      <div class="card shadow-sm p-4 h-100">
+        <h2 class="fw-bold mb-3">Send Me a Message</h2>
+        <form>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-custom w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+    body.dark-mode .dashboard-content {
+      background-color: #000; /* Black background */
+      padding: 4rem 0; /* Add padding for spacing */
+      border-radius: 15px; /* Rounded corners for the section */
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1); /* Subtle shadow for depth */
+      color: #fff; /* White text for visibility */
+    }
+    body.dark-mode .contact-me h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4ecca3; /* Bright green for headings */
+      margin-bottom: 1.5rem;
+    }
+    body.dark-mode .contact-me p {
+      font-size: 1rem;
+      color: #ccc; /* Light gray for paragraph text */
+      line-height: 1.6;
+    }
+    body.dark-mode .social-links a {
+      font-size: 1.5rem;
+      color: #4ecca3; /* Bright green for social icons */
+      margin-right: 1rem;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode .social-links a:hover {
+      color: #2a5298; /* Darker blue on hover */
+    }
+    body.dark-mode .card {
+      background-color: #111; /* Dark gray card background */
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+    }
+    body.dark-mode .card h2 {
+      color: #4ecca3; /* Bright green for card heading */
+    }
+    body.dark-mode .form-control {
+      background-color: #222; /* Dark input background */
+      border: 1px solid #444;
+      color: #fff; /* White text for inputs */
+    }
+    body.dark-mode .form-control:focus {
+      border-color: #4ecca3;
+      box-shadow: 0 0 5px rgba(78, 204, 163, 0.5);
+    }
+    body.dark-mode .btn-custom {
+      background-color: #4ecca3; /* Bright green for buttons */
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+
+    .dashboard-content {
+      background-color: #ffffff; /* Light background */
+      padding: 4rem 0; /* Add padding for spacing */
+      border-radius: 15px; /* Rounded corners for the section */
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    .contact-me h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e3c72; /* Primary blue for headings */
+      margin-bottom: 1.5rem;
+    }
+    .contact-me p {
+      font-size: 1rem;
+      color: #666; /* Soft gray for paragraph text */
+      line-height: 1.6;
+    }
+    .social-links a {
+      font-size: 1.5rem;
+      color: #1e3c72; /* Primary blue for social icons */
+      margin-right: 1rem;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #2a5298; /* Darker blue on hover */
+    }
+    .btn-custom {
+      background-color: #1e3c72; /* Primary blue for buttons */
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #2a5298; /* Darker blue on hover */
+    }
+    .form-control {
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      transition: border-color 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: #1e3c72;
+      box-shadow: 0 0 5px rgba(30, 60, 114, 0.5);
+    }
+</style>
+
+
+
+<footer class="text-light pt-5 pb-4">
+  <div class="container text-center text-md-start">
+    <div class="row">
+      <!-- Company Information -->
+      <div class="col-12 col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+        <h6 class="text-uppercase fw-bold">chhunsophat</h6>
+        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #1e3c72; height: 2px" />
+        <p>Providing high-quality products and services since 2023. Join us to experience the best solutions tailored for you.</p>
+      </div>
+      <!-- Links -->
+      <div class="col-12 col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+  <h6 class="text-uppercase fw-bold">Social Page</h6>
+  <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #1e3c72; height: 2px" />
+  <p><a href="#!" class="footer-link text-decoration-none"><i class="fab fa-facebook-f me-2"></i>Facebook</a></p>
+  <p><a href="#!" class="footer-link text-decoration-none"><i class="fab fa-telegram-plane me-2"></i>Telegram</a></p>
+  <p><a href="#!" class="footer-link text-decoration-none"><i class="fab fa-instagram me-2"></i>Instagram</a></p>
+</div>
+<div class="col-12 col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+  <h6 class="text-uppercase fw-bold">Production</h6>
+  <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #1e3c72; height: 2px" />
+  <p><a href="#!" class="footer-link text-decoration-none"><i class="fas fa-shopping-cart me-2"></i>Ecommerce</a></p>
+  <p><a href="#!" class="footer-link text-decoration-none"><i class="fas fa-database me-2"></i>Cruding</a></p>
+</div>
+    </div>
+  </div>
+</footer>
+  <style>
+     body.dark-mode footer {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        margin-top: 2rem;
+      }
+  
+      body.dark-mode .footer-link {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+  
+      body.dark-mode .footer-link:hover {
+        color: #4ecca3;
+        text-shadow: 0 0 10px #4ecca3;
+      }
+  
+      body.dark-mode .footer-link::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #4ecca3;
+        transition: width 0.3s;
+      }
+  
+      body.dark-mode .footer-link:hover::after {
+        width: 100%;
+      }
+
+      body.dark-mode footer h6 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #d1d6e1; /* Primary blue for headings */
+    }
+
+      footer {
+      background-color: #ffffff; /* Light background */
+      padding: 4rem 0 2rem 0; /* Add padding for spacing */
+      border-top: 1px solid #ddd; /* Subtle border for separation */
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+    footer h6 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1e3c72; /* Primary blue for headings */
+    }
+
+    body.dark-mode footer h6 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #d1d6e1; /* Primary blue for headings */
+    }
+    footer p {
+      font-size: 1rem;
+      color: #666; /* Soft gray for paragraph text */
+      line-height: 1.6;
+    }
+    .footer-link {
+      color: #1e3c72; /* Primary blue for links */
+      transition: color 0.3s ease;
+    }
+    .footer-link:hover {
+      color: #2a5298; /* Darker blue on hover */
+      text-decoration: none;
+    }
+    hr {
+      background-color: #1e3c72; /* Primary blue for horizontal lines */
+      height: 2px;
+    }
+  </style>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JavaScript for Switch Button -->
+  <script>
+    // Switch Button Logic
+    const switchButton = document.getElementById('modeSwitch');
+    const body = document.body;
+
+    // Check local storage for saved mode
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      switchButton.checked = true;
+    }
+
+    // Toggle dark mode on switch click
+    switchButton.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+  </script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+   <!-- Initialize AOS -->
+   <script>
+     AOS.init();
+   </script>
+</body>
+</html>
